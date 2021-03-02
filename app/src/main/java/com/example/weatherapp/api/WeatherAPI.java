@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 
 public interface WeatherAPI {
 
-    @GET("data/2.5/forecast?q=Minsk&cnt=7&units=metric&appid=" + Constants.apiKey)
+    @GET("data/2.5/forecast?q=Minsk&units=metric&appid=" + Constants.apiKey)
     Observable<WeatherResponse> getWeatherData();
 }
