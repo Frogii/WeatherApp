@@ -1,4 +1,7 @@
-package com.example.weatherapp.model;
+package com.example.weatherapp.model.network;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;

@@ -1,15 +1,8 @@
-package com.example.weatherapp.model;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+package com.example.weatherapp.model.network;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "item")
 public class WeatherItem{
-
-	@PrimaryKey(autoGenerate = true)
-	private int key;
 
 	@SerializedName("icon")
 	private String icon;
@@ -53,13 +46,5 @@ public class WeatherItem{
 
 	public int getId(){
 		return id;
-	}
-
-	public int getKey() {
-		return key;
-	}
-
-	public void setKey(int key) {
-		this.key = key;
 	}
 }

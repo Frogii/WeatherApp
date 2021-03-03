@@ -1,4 +1,4 @@
-package com.example.weatherapp.model;
+package com.example.weatherapp.model.network;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class ListItem{
 
 	@SerializedName("dt")
-	private int dt;
+	private long dt;
 
 	@SerializedName("pop")
 	private double pop;
@@ -42,7 +42,7 @@ public class ListItem{
 		this.dt = dt;
 	}
 
-	public int getDt(){
+	public long getDt(){
 		return dt;
 	}
 

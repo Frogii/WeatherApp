@@ -6,15 +6,16 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.weatherapp.model.WeatherItem;
+import com.example.weatherapp.model.local.DayTemp;
+import com.example.weatherapp.model.network.WeatherResponse;
 
 @Database(
-        entities = WeatherItem.class,
+        entities = DayTemp.class,
         version = 1
 )
 public abstract class WeatherDatabase extends RoomDatabase {
 
-    abstract WeatherDao getWeatherDao();
+    abstract public WeatherDao getWeatherDao();
 
     private static volatile WeatherDatabase instance;
 
