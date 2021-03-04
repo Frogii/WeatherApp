@@ -63,6 +63,7 @@ public class MainViewModel extends ViewModel {
     private List<DayTempForecast> createDayTempForecastList(WeatherResponse response) {
         List<DayTempForecast> list = new ArrayList<>();
         list.add(new DayTempForecast(response.getList().get(0).getDt(), new ArrayList<WeatherForecast>()));
+        list.get(0).getWeatherForecasts().add(listItemToWeatherForecast(response.getList().get(0)));
         for (int i = 0; i < response.getList().size()-1; i++) {
             if (!AppDateUtils.longDateToPattern(response.getList().get(i).getDt(), AppDateUtils.dayNum)
                     .equals(AppDateUtils.longDateToPattern(response.getList().get(i + 1).getDt(), AppDateUtils.dayNum))) {

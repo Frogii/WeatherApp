@@ -38,8 +38,8 @@ public class DetailsRecAdapter extends RecyclerView.Adapter<DetailsRecAdapter.De
     public void onBindViewHolder(@NonNull DetailsViewHolder holder, int position) {
         holder.time.setText(AppDateUtils.longDateToPattern(data.get(position).getTime(), AppDateUtils.hours_minutes));
         holder.temp.setText(String.valueOf((int) data.get(position).getTemp()));
-        holder.minTemp.setText(String.valueOf((int) data.get(position).getTempMin()));
-        holder.maxTemp.setText(String.valueOf((int) data.get(position).getTempMax()));
+        holder.minTemp.setText(Double.toString(data.get(position).getTempMin()));
+        holder.maxTemp.setText(Double.toString(data.get(position).getTempMax()));
         holder.pressure.setText(String.valueOf(data.get(position).getPressure()));
         holder.feels.setText(String.valueOf((int) data.get(position).getFeelsLike()));
     }
