@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="13:00"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Temp:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
+
+        <TextView
+            android:id="@+id/textViewTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="+20"
+            app:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewMinTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="MinTemp:"
+            app:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewMaxTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="MaxTemp:"
+            app:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewMinTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="+17"
+            app:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewMaxTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="+22"
+            app:layout_constraintStart_toEndOf="@+id/textViewMaxTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewMaxTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewPressureTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Pressure:"
+            app:layout_constraintStart_toStartOf="@+id/textViewMaxTempTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMaxTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="1019"
+            app:layout_constraintStart_toEndOf="@+id/textViewPressureTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewPressureTitle" />
+
+        <TextView
+            android:id="@+id/textViewFeelsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Feels:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewTempTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTempTitle" />
+
+        <TextView
+            android:id="@+id/textViewFeels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="+22"
+            app:layout_constraintStart_toEndOf="@+id/textViewFeelsTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewFeelsTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

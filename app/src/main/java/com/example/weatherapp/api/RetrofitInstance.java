@@ -1,6 +1,6 @@
 package com.example.weatherapp.api;
 
-import com.example.weatherapp.db.WeatherDatabase;
+
 import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;
