@@ -3,6 +3,7 @@ package com.example.weatherapp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.weatherapp.R;
 import com.example.weatherapp.adapter.ClickableMainRecycler;
 import com.example.weatherapp.adapter.MainRecyclerAdapter;
+import com.example.weatherapp.databinding.ActivityMainBinding;
 import com.example.weatherapp.model.local.DayTempForecast;
 import com.example.weatherapp.model.local.WeatherForecast;
 import com.example.weatherapp.model.network.WeatherResponse;
@@ -28,11 +30,14 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
     MainViewModelProviderFactory mainViewModelProviderFactory;
     MainRecyclerAdapter adapter;
     RecyclerView recyclerView;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
 //        WeatherDatabase db = WeatherDatabase.getInstance(this);
         weatherRepository = new WeatherRepository();
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
 
     private void setupRecycler() {
         adapter = new MainRecyclerAdapter(this);
-        recyclerView = findViewById(R.id.mainRecyclerView);
+        recyclerView = binding.mainRecyclerView;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

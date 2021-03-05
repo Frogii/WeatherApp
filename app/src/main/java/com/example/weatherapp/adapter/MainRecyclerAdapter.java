@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherapp.R;
+import com.example.weatherapp.databinding.DayItemBinding;
 import com.example.weatherapp.model.local.DayTempForecast;
 import com.example.weatherapp.util.AppDateUtils;
 
@@ -34,7 +35,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @NonNull
     @Override
     public WeatherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new WeatherViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.day_item, parent, false));
+        return new WeatherViewHolder(DayItemBinding
+                .inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
@@ -42,7 +44,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 //        Date date = AppDateUtils.convertLongToDate(data.get(position).getDt());
 //        holder.day.setText(AppDateUtils.longDateToPattern(date, AppDateUtils.day));
 //        holder.temp.setText(String.valueOf((int)Math.round(data.get(position).getMain().getTemp())));
-        holder.day.setText(AppDateUtils.longDateToPattern(data.get(position).getTime(), AppDateUtils.dayNum_day_month));
+        holder.binding.textViewDayName.setText(AppDateUtils
+                .longDateToPattern(data.get(position).getTime(), AppDateUtils.dayNum_day_month));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +60,11 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     }
 
     public static class WeatherViewHolder extends RecyclerView.ViewHolder {
-        final TextView day;
-        public WeatherViewHolder(@NonNull View itemView) {
-            super(itemView);
-            day = itemView.findViewById(R.id.textViewDayName);
+        DayItemBinding binding;
+
+        public WeatherViewHolder(@NonNull DayItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

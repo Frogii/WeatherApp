@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherapp.R;
+import com.example.weatherapp.databinding.DetailsItemBinding;
 import com.example.weatherapp.model.local.WeatherForecast;
 import com.example.weatherapp.util.AppDateUtils;
 
@@ -27,21 +28,19 @@ public class DetailsRecAdapter extends RecyclerView.Adapter<DetailsRecAdapter.De
     @NonNull
     @Override
     public DetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DetailsViewHolder(
-                LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.details_item, parent, false)
-        );
+        return new DetailsViewHolder(DetailsItemBinding
+                .inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull DetailsViewHolder holder, int position) {
-        holder.time.setText(AppDateUtils.longDateToPattern(data.get(position).getTime(), AppDateUtils.hours_minutes));
-        holder.temp.setText(String.valueOf((int) data.get(position).getTemp()));
-        holder.minTemp.setText(Double.toString(data.get(position).getTempMin()));
-        holder.maxTemp.setText(Double.toString(data.get(position).getTempMax()));
-        holder.pressure.setText(String.valueOf(data.get(position).getPressure()));
-        holder.feels.setText(String.valueOf((int) data.get(position).getFeelsLike()));
+        holder.binding.textViewTime.setText(AppDateUtils.longDateToPattern(data.get(position).getTime(), AppDateUtils.hours_minutes));
+        holder.binding.textViewTemp.setText(String.valueOf((int) data.get(position).getTemp()));
+        holder.binding.textViewMinTemp.setText(Double.toString(data.get(position).getTempMin()));
+        holder.binding.textViewMaxTemp.setText(Double.toString(data.get(position).getTempMax()));
+        holder.binding.textViewPressure.setText(String.valueOf(data.get(position).getPressure()));
+        holder.binding.textViewFeels.setText(String.valueOf((int) data.get(position).getFeelsLike()));
     }
 
     @Override
@@ -50,22 +49,11 @@ public class DetailsRecAdapter extends RecyclerView.Adapter<DetailsRecAdapter.De
     }
 
     public static class DetailsViewHolder extends RecyclerView.ViewHolder {
+        DetailsItemBinding binding;
 
-        TextView temp;
-        TextView minTemp;
-        TextView maxTemp;
-        TextView pressure;
-        TextView feels;
-        TextView time;
-
-        public DetailsViewHolder(@NonNull View itemView) {
-            super(itemView);
-            temp = itemView.findViewById(R.id.textViewTemp);
-            minTemp = itemView.findViewById(R.id.textViewMinTemp);
-            maxTemp = itemView.findViewById(R.id.textViewMaxTemp);
-            pressure = itemView.findViewById(R.id.textViewPressure);
-            feels = itemView.findViewById(R.id.textViewFeels);
-            time = itemView.findViewById(R.id.textViewTime);
+        public DetailsViewHolder(@NonNull DetailsItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
