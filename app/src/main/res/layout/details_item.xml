@@ -45,7 +45,7 @@
             android:id="@+id/textViewMinTempTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="44dp"
             android:text="MinTemp:"
             app:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
             app:layout_constraintTop_toTopOf="@+id/textViewTempTitle" />
@@ -83,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Pressure:"
-            app:layout_constraintStart_toStartOf="@+id/textViewMaxTempTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewMaxTempTitle" />
+            app:layout_constraintStart_toStartOf="@+id/textViewMinTempTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMinTempTitle" />
 
         <TextView
             android:id="@+id/textViewPressure"
@@ -114,6 +114,26 @@
             android:text="+22"
             app:layout_constraintStart_toEndOf="@+id/textViewFeelsTitle"
             app:layout_constraintTop_toTopOf="@+id/textViewFeelsTitle" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="clear"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewMaxTempTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

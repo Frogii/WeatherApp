@@ -1,5 +1,6 @@
 package com.example.weatherapp.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.weatherapp.R;
 import com.example.weatherapp.databinding.DetailsItemBinding;
 import com.example.weatherapp.model.local.WeatherForecast;
 import com.example.weatherapp.util.AppDateUtils;
+import com.example.weatherapp.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,12 @@ public class DetailsRecAdapter extends RecyclerView.Adapter<DetailsRecAdapter.De
         holder.binding.textViewMaxTemp.setText(Double.toString(data.get(position).getTempMax()));
         holder.binding.textViewPressure.setText(String.valueOf(data.get(position).getPressure()));
         holder.binding.textViewFeels.setText(String.valueOf((int) data.get(position).getFeelsLike()));
+        holder.binding.textViewDescription.setText(data.get(position).getWeatherDescription());
+        Glide
+                .with(holder.itemView.getContext())
+                .load(Constants.imagesUrlStart + data.get(position).getImageName() + Constants.imagesUrlEnd)
+                .into(holder.binding.imageViewIcon);
+        Log.d("myLog",Constants.imagesUrlStart + data.get(position).getImageName() + Constants.imagesUrlEnd);
     }
 
     @Override

@@ -49,20 +49,13 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
 
         Log.d("myLog", "day " + AppDateUtils.longDateToPattern(1614826800L, AppDateUtils.dayNum));
 
-        mainViewModel.weatherLiveData.observe(this, new Observer<WeatherResponse>() {
-            @Override
-            public void onChanged(WeatherResponse weatherResponse) {
-                Log.d("myLog", "main Log " + String.valueOf((int)Math.round(weatherResponse.getList().get(0).getMain().getTemp())));
+        mainViewModel.weatherLiveData.observe(this, weatherResponse ->
+                Log.d("myLog", "main Log " + String.valueOf((int)Math.round(weatherResponse.getList().get(0).getMain().getTemp())))
+        );
 
-            }
-        });
-
-        mainViewModel.dayTempForecastMutableLiveData.observe(this, new Observer<List<DayTempForecast>>() {
-            @Override
-            public void onChanged(List<DayTempForecast> dayTempForecasts) {
-                adapter.setData(dayTempForecasts);
-            }
-        });
+        mainViewModel.dayTempForecastMutableLiveData.observe(this, dayTempForecasts ->
+                adapter.setData(dayTempForecasts)
+        );
     }
 
     private void setupRecycler() {

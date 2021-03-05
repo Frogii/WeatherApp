@@ -80,7 +80,9 @@ public class MainViewModel extends ViewModel {
                 listItem.getMain().getTempMin(),
                 listItem.getMain().getPressure(),
                 listItem.getMain().getFeelsLike(),
-                listItem.getMain().getTempMax());
+                listItem.getMain().getTempMax(),
+                listItem.getWeather().get(0).getIcon(),
+                listItem.getWeather().get(0).getDescription());
     }
 
     @Override
