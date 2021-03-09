@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.List;
 
-//@Entity(tableName = "weather")
+@Entity(tableName = "weather")
 public class DayTempForecast implements Serializable {
 
-//    @PrimaryKey
+    @PrimaryKey
     private final long time;
     List<WeatherForecast> weatherForecasts;
 

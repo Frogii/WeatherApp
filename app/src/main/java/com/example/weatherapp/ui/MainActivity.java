@@ -15,6 +15,7 @@ import com.example.weatherapp.R;
 import com.example.weatherapp.adapter.ClickableMainRecycler;
 import com.example.weatherapp.adapter.MainRecyclerAdapter;
 import com.example.weatherapp.databinding.ActivityMainBinding;
+import com.example.weatherapp.db.WeatherDatabase;
 import com.example.weatherapp.model.local.DayTempForecast;
 import com.example.weatherapp.model.local.WeatherForecast;
 import com.example.weatherapp.model.network.WeatherResponse;
@@ -39,19 +40,13 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
         View view = binding.getRoot();
         setContentView(view);
 
-//        WeatherDatabase db = WeatherDatabase.getInstance(this);
-        weatherRepository = new WeatherRepository();
+        WeatherDatabase db = WeatherDatabase.getInstance(this);
+        weatherRepository = new WeatherRepository(db);
         mainViewModelProviderFactory = new MainViewModelProviderFactory(weatherRepository);
         mainViewModel = new ViewModelProvider(this, mainViewModelProviderFactory).get(MainViewModel.class);
         mainViewModel.getData();
 
         setupRecycler();
-
-        Log.d("myLog", "day " + AppDateUtils.longDateToPattern(1614826800L, AppDateUtils.dayNum));
-
-        mainViewModel.weatherLiveData.observe(this, weatherResponse ->
-                Log.d("myLog", "main Log " + String.valueOf((int)Math.round(weatherResponse.getList().get(0).getMain().getTemp())))
-        );
 
         mainViewModel.dayTempForecastMutableLiveData.observe(this, dayTempForecasts ->
                 adapter.setData(dayTempForecasts)

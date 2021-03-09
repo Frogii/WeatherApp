@@ -23,9 +23,7 @@ public class MainViewModel extends ViewModel {
     Disposable apiDisposable;
     Disposable localDisposable;
     WeatherRepository repository;
-    MutableLiveData<WeatherResponse> weatherLiveData = new MutableLiveData<>();
     MutableLiveData<List<DayTempForecast>> dayTempForecastMutableLiveData = new MutableLiveData<>();
-//    List<DayTempForecast> dayTempForecasts = new ArrayList<>();
 
     MainViewModel(WeatherRepository repository) {
         this.repository = repository;
@@ -34,31 +32,31 @@ public class MainViewModel extends ViewModel {
     void getData() {
         apiDisposable = repository.getWeatherFromApi()
                 .subscribe(response -> {
-                    weatherLiveData.postValue(response);
                     List<DayTempForecast> dataList = createDayTempForecastList(response);
                     dayTempForecastMutableLiveData.postValue(dataList);
-//                    addWeatherToDB(dayTempForecasts);
+                    addWeatherToDB(dataList);
                 }, error -> {
                     Log.d("myLog", "Network connection ERROR: " + error.getMessage());
-//                    getWeatherDataFromDB();
+                    getWeatherDataFromDB();
                 });
 
     }
 
-//    void getWeatherDataFromDB() {
-//        localDisposable = repository.getWeatherDataFromDB().subscribe(data -> {
-//                    if (data.isEmpty()) {
-//                        Log.d("myLog", "Local DB is empty");
-//                    }
-//                    Log.d("myLog", data.toString());
-//                },
-//                dbError -> Log.d("myLog", "Local DB error")
-//        );
-//    }
-//
-//    void addWeatherToDB(List<DayTempForecast> list) {
-//        repository.addWeatherData(list).subscribe();
-//    }
+    void getWeatherDataFromDB() {
+        localDisposable = repository.getWeatherDataFromDB().subscribe(data -> {
+                    if (data.isEmpty()) {
+                        Log.d("myLog", "Local DB is empty");
+                    }
+                    Log.d("myLog", data.toString());
+                    dayTempForecastMutableLiveData.postValue(data);
+                },
+                dbError -> Log.d("myLog", "Local DB error")
+        );
+    }
+
+    void addWeatherToDB(List<DayTempForecast> list) {
+        repository.addWeatherData(list).subscribe();
+    }
 
     private List<DayTempForecast> createDayTempForecastList(WeatherResponse response) {
         List<DayTempForecast> list = new ArrayList<>();
