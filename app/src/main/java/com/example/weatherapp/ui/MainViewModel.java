@@ -32,6 +32,7 @@ public class MainViewModel extends ViewModel {
     void getData() {
         apiDisposable = repository.getWeatherFromApi()
                 .subscribe(response -> {
+                    repository.deleteWeatherData().subscribe();
                     List<DayTempForecast> dataList = createDayTempForecastList(response);
                     dayTempForecastMutableLiveData.postValue(dataList);
                     addWeatherToDB(dataList);

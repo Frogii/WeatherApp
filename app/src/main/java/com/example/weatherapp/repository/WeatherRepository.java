@@ -12,6 +12,7 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 public class WeatherRepository {
@@ -39,6 +40,12 @@ public class WeatherRepository {
     public Observable<List<DayTempForecast>> getWeatherDataFromDB() {
         return db.getWeatherDao()
                 .getWeatherData()
+                .subscribeOn(Schedulers.io());
+    }
+
+    public Completable deleteWeatherData(){
+        return db.getWeatherDao()
+                .deleteWeatherData()
                 .subscribeOn(Schedulers.io());
     }
 

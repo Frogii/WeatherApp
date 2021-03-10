@@ -41,17 +41,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull WeatherViewHolder holder, int position) {
-//        Date date = AppDateUtils.convertLongToDate(data.get(position).getDt());
-//        holder.day.setText(AppDateUtils.longDateToPattern(date, AppDateUtils.day));
-//        holder.temp.setText(String.valueOf((int)Math.round(data.get(position).getMain().getTemp())));
         holder.binding.textViewDayName.setText(AppDateUtils
                 .longDateToPattern(data.get(position).getTime(), AppDateUtils.dayNum_day_month));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickableMainRecycler.onItemClick(data.get(position));
-            }
-        });
+        holder.itemView.setOnClickListener(v ->
+                clickableMainRecycler.onItemClick(data.get(position)));
     }
 
     @Override

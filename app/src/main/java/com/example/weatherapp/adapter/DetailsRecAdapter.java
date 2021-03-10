@@ -49,7 +49,6 @@ public class DetailsRecAdapter extends RecyclerView.Adapter<DetailsRecAdapter.De
                 .with(holder.itemView.getContext())
                 .load(Constants.imagesUrlStart + data.get(position).getImageName() + Constants.imagesUrlEnd)
                 .into(holder.binding.imageViewIcon);
-        Log.d("myLog",Constants.imagesUrlStart + data.get(position).getImageName() + Constants.imagesUrlEnd);
     }
 
     @Override
