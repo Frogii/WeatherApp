@@ -10,6 +10,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Constraints;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.example.weatherapp.R;
 import com.example.weatherapp.adapter.ClickableMainRecycler;
@@ -21,8 +25,10 @@ import com.example.weatherapp.model.local.WeatherForecast;
 import com.example.weatherapp.model.network.WeatherResponse;
 import com.example.weatherapp.repository.WeatherRepository;
 import com.example.weatherapp.util.AppDateUtils;
+import com.example.weatherapp.wmanager.WManager;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements ClickableMainRecycler {
 
@@ -51,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
         mainViewModel.dayTempForecastMutableLiveData.observe(this, dayTempForecasts ->
                 adapter.setData(dayTempForecasts)
         );
+
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(WManager.class)
+                .setConstraints(new Constraints.Builder().setRequiresCharging(true).build())
+                .build();
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(workRequest.getId()).observe(this, workInfo -> {
+                    Log.d("myLog", String.valueOf(workInfo.getState()));
+                }
+        );
+        WorkManager.getInstance(this).enqueue(workRequest);
     }
 
     private void setupRecycler() {
