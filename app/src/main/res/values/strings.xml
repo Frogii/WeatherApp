@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="pager_off">Pager OFF </string>
+    <string name="pager_on">Pager ON </string>
 </resources>

@@ -24,6 +24,7 @@ public class MainViewModel extends ViewModel {
     Disposable localDisposable;
     WeatherRepository repository;
     MutableLiveData<List<DayTempForecast>> dayTempForecastMutableLiveData = new MutableLiveData<>();
+    MutableLiveData<Boolean> switchButtonState = new MutableLiveData<>(false);
 
     MainViewModel(WeatherRepository repository) {
         this.repository = repository;
@@ -82,6 +83,10 @@ public class MainViewModel extends ViewModel {
                 listItem.getMain().getTempMax(),
                 listItem.getWeather().get(0).getIcon(),
                 listItem.getWeather().get(0).getDescription());
+    }
+
+    public void setSwitchButtonState(Boolean state) {
+        switchButtonState.setValue(state);
     }
 
     @Override
