@@ -3,6 +3,7 @@ package com.example.weatherapp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
                 mainBinding.mainPagerView.setVisibility(View.GONE);
                 mainViewModel.setSwitchButtonState(false);
             }
+            closeDrawer();
         });
     }
 
@@ -129,5 +132,11 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    void closeDrawer() {
+        if (mainBinding.mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mainBinding.mainDrawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 }
