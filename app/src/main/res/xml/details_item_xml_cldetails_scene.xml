@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="500">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnClick motion:targetId="@id/clDetails"
+            motion:clickAction="toggle" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+        <Constraint
+            android:id="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewTime"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+        <Constraint
+            android:id="@+id/textViewTemp"
+            motion:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewTempTitle" />
+        <Constraint
+            android:id="@+id/textViewFeelsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewTempTitle"
+            motion:layout_constraintStart_toStartOf="@+id/textViewTempTitle"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+        <Constraint
+            android:id="@+id/textViewFeels"
+            motion:layout_constraintStart_toEndOf="@+id/textViewFeelsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewFeelsTitle" />
+        <Constraint
+            android:id="@+id/textViewPressureTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewMinTempTitle"
+            motion:layout_constraintStart_toStartOf="@+id/textViewMinTempTitle"
+            android:layout_marginTop="8dp" />
+        <Constraint
+            android:id="@+id/textViewPressure"
+            motion:layout_constraintStart_toEndOf="@+id/textViewPressureTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewPressureTitle" />
+        <Constraint
+            android:id="@+id/textViewMaxTempTitle"
+            motion:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle" />
+        <Constraint
+            android:id="@+id/textViewMinTempTitle"
+            motion:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewTempTitle" />
+        <Constraint
+            android:id="@+id/textViewMinTemp"
+            motion:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle" />
+        <Constraint
+            android:id="@+id/textViewDescription"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintBottom_toTopOf="@+id/textViewMaxTempTitle"
+            android:layout_marginEnd="16dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:layout_height="140dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="140dp"
+            android:id="@+id/imageViewIcon" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageViewIcon"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewMaxTempTitle"
+            motion:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewPressureTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewMinTempTitle"
+            motion:layout_constraintStart_toStartOf="@+id/textViewMinTempTitle"
+            android:layout_marginTop="8dp"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewPressure"
+            motion:layout_constraintStart_toEndOf="@+id/textViewPressureTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewPressureTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewFeelsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewTempTitle"
+            motion:layout_constraintStart_toStartOf="@+id/textViewTempTitle"
+            android:layout_marginTop="8dp"
+            android:alpha="0"
+            android:layout_marginBottom="0dp" />
+        <Constraint
+            android:id="@+id/textViewTemp"
+            motion:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewTempTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewMinTempTitle"
+            motion:layout_constraintStart_toEndOf="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewTempTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewMinTemp"
+            motion:layout_constraintStart_toEndOf="@+id/textViewMinTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewMinTempTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewDescription"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintBottom_toTopOf="@+id/textViewMaxTempTitle"
+            android:layout_marginEnd="16dp"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewFeels"
+            motion:layout_constraintStart_toEndOf="@+id/textViewFeelsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewFeelsTitle"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/textViewTime"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/textViewMaxTemp"
+            motion:layout_constraintStart_toEndOf="@+id/textViewMaxTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintTop_toTopOf="@+id/textViewMaxTempTitle"
+            android:alpha="0" />
+    </ConstraintSet>
+</MotionScene>

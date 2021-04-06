@@ -20,9 +20,9 @@ import io.reactivex.disposables.Disposable;
 
 public class MainViewModel extends ViewModel {
 
-    Disposable apiDisposable;
-    Disposable localDisposable;
-    WeatherRepository repository;
+    private Disposable apiDisposable;
+    private Disposable localDisposable;
+    private WeatherRepository repository;
     MutableLiveData<List<DayTempForecast>> dayTempForecastMutableLiveData = new MutableLiveData<>();
     MutableLiveData<Boolean> switchButtonState = new MutableLiveData<>(false);
 
