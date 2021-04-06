@@ -22,11 +22,12 @@ import com.example.weatherapp.adapter.ClickableMainRecycler;
 import com.example.weatherapp.adapter.MainRecyclerAdapter;
 import com.example.weatherapp.adapter.MainViewPagerAdapter;
 import com.example.weatherapp.databinding.ActivityMainBinding;
+import com.example.weatherapp.databinding.FragmentMainBinding;
 import com.example.weatherapp.db.WeatherDatabase;
 import com.example.weatherapp.model.local.DayTempForecast;
 import com.example.weatherapp.repository.WeatherRepository;
 
-public class MainActivity extends AppCompatActivity implements ClickableMainRecycler {
+public class MainActivity extends AppCompatActivity {
 
     WeatherRepository weatherRepository;
     MainViewModel mainViewModel;
@@ -51,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
         mainDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setupRecycler();
-        setupPager();
 
         drawerSwitch = (SwitchCompat) mainBinding.navView.getMenu().findItem(R.id.nav_switch).getActionView();
 
@@ -62,16 +61,8 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
         mainViewModel = new ViewModelProvider(this, mainViewModelProviderFactory).get(MainViewModel.class);
         mainViewModel.getData();
 
-        mainViewModel.dayTempForecastMutableLiveData.observe(this, dayTempForecasts -> {
-                    recyclerAdapter.setData(dayTempForecasts);
-                    pagerAdapter.setData(dayTempForecasts);
-                }
-        );
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainCL, new MainFragment(), "main").commit();
 
-        mainViewModel.switchButtonState.observe(this, state -> {
-            drawerSwitch.setChecked(state);
-            Log.d("myLog", state.toString());
-        });
 
 //        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(WManager.class)
 //                .setConstraints(new Constraints.Builder().setRequiresCharging(true).build())
@@ -82,40 +73,6 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
 //        );
 //        WorkManager.getInstance(this).enqueue(workRequest);
 
-        drawerSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                drawerSwitch.setText(R.string.pager_on);
-                mainBinding.mainRecyclerView.setVisibility(View.GONE);
-                mainBinding.mainPagerView.setVisibility(View.VISIBLE);
-                mainViewModel.setSwitchButtonState(true);
-            } else {
-                drawerSwitch.setText(R.string.pager_off);
-                mainBinding.mainRecyclerView.setVisibility(View.VISIBLE);
-                mainBinding.mainPagerView.setVisibility(View.GONE);
-                mainViewModel.setSwitchButtonState(false);
-            }
-            closeDrawer();
-        });
-    }
-
-    private void setupRecycler() {
-        recyclerAdapter = new MainRecyclerAdapter(this);
-        recyclerView = mainBinding.mainRecyclerView;
-        recyclerView.setAdapter(recyclerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    private void setupPager() {
-        pagerAdapter = new MainViewPagerAdapter(this);
-        pagerView = mainBinding.mainPagerView;
-        pagerView.setAdapter(pagerAdapter);
-    }
-
-    @Override
-    public void onItemClick(DayTempForecast item) {
-        Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra("item", item);
-        startActivity(intent);
     }
 
     @Override
@@ -124,11 +81,5 @@ public class MainActivity extends AppCompatActivity implements ClickableMainRecy
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    void closeDrawer() {
-        if (mainBinding.mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mainBinding.mainDrawerLayout.closeDrawer(GravityCompat.START);
-        }
     }
 }
