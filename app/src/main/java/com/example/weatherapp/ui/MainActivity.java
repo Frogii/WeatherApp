@@ -3,11 +3,8 @@ package com.example.weatherapp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,20 +16,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-import androidx.work.Constraints;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
 
 import com.example.weatherapp.R;
 import com.example.weatherapp.adapter.ClickableMainRecycler;
 import com.example.weatherapp.adapter.MainRecyclerAdapter;
 import com.example.weatherapp.adapter.MainViewPagerAdapter;
 import com.example.weatherapp.databinding.ActivityMainBinding;
-import com.example.weatherapp.databinding.NavHeaderBinding;
 import com.example.weatherapp.db.WeatherDatabase;
 import com.example.weatherapp.model.local.DayTempForecast;
 import com.example.weatherapp.repository.WeatherRepository;
-import com.example.weatherapp.wmanager.WManager;
 
 public class MainActivity extends AppCompatActivity implements ClickableMainRecycler {
 

@@ -1,19 +1,15 @@
 package com.example.weatherapp.ui;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-
-import com.example.weatherapp.R;
 import com.example.weatherapp.adapter.DetailsRecAdapter;
 import com.example.weatherapp.databinding.ActivityDetailsBinding;
 import com.example.weatherapp.model.local.DayTempForecast;
-import com.example.weatherapp.model.local.WeatherForecast;
-import com.example.weatherapp.model.network.WeatherResponse;
 
 public class DetailsActivity extends AppCompatActivity {
 
