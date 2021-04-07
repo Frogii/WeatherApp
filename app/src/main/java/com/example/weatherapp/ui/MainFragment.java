@@ -35,12 +35,12 @@ public class MainFragment extends Fragment implements ClickableMainRecycler {
     MainViewPagerAdapter pagerAdapter;
     SwitchCompat drawerSwitch;
     MainActivity activity;
+    DetailsFragment detailsFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -101,7 +101,7 @@ public class MainFragment extends Fragment implements ClickableMainRecycler {
     public void onItemClick(DayTempForecast item) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("item", item);
-        DetailsFragment detailsFragment = new DetailsFragment();
+        detailsFragment = new DetailsFragment();
         detailsFragment.setArguments(bundle);
         activity.getSupportFragmentManager().beginTransaction().add(R.id.mainCL, detailsFragment).addToBackStack("details").commit();
     }

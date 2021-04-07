@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     ActionBarDrawerToggle toggle;
     SwitchCompat drawerSwitch;
+    MainFragment mainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel = new ViewModelProvider(this, mainViewModelProviderFactory).get(MainViewModel.class);
         mainViewModel.getData();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainCL, new MainFragment(), "main").commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainCL, new MainFragment(), "main").commit();
+        }
+
+        Log.d("myLog", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
 
 
 //        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(WManager.class)
